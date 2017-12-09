@@ -10,7 +10,7 @@
   "author": "Kuba Przetakiewicz",
   "license": "The Unlicense",
   "dependencies": {
-    "googleapis": "^23.0.0",
+    "axios": "^0.17.1",
     "normalize.css": "^7.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

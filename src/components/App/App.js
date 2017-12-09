@@ -4,6 +4,8 @@ import {
     Switch
 } from 'react-router-dom';
 
+import axios from 'axios';
+
 /*  
     Poniższe importy są skonstruowane w taki sposób dlatego, że ES6 nie pozwala na `export default` w przypadku zwykłych funkcji.
     Mamy zatem dwa wyjścia:
@@ -40,8 +42,15 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            navColorTheme: 'green'
+            navColorTheme: 'green',
+            dogs: {}
         }
+    }
+
+    componentDidMount() {
+        axios
+            .get('https://dog.ceo/api/breeds/list/all')
+            .then((res) => this.setState({dogs: Object.keys(res.data.message)}), () => console.log(this.state.dogs));
     }
 
     toggleNavColorTheme = () => {
@@ -55,6 +64,10 @@ export default class App extends React.Component {
             <div className='container'>
                 <h1 className='app-title'>Basic App</h1>
                 <Nav colorTheme={this.state.navColorTheme}/>
+                <ul>
+                    {console.log(this.state.dogs)}
+                    {Array.isArray(this.state.dogs) && this.state.dogs.map((dog, index) => <li key={index}>{dog}</li>)}
+                </ul>
                 <main>
                     <Switch>
                         <Route exact path='/' render={
