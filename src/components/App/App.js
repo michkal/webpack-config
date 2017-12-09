@@ -4,8 +4,6 @@ import {
     Switch
 } from 'react-router-dom';
 
-import axios from 'axios';
-
 /*  
     Poniższe importy są skonstruowane w taki sposób dlatego, że ES6 nie pozwala na `export default` w przypadku zwykłych funkcji.
     Mamy zatem dwa wyjścia:
@@ -20,6 +18,7 @@ import axios from 'axios';
 
 import { Nav } from '../Nav/Nav';
 import Users from '../Users/Users';
+import Dogs from '../Dogs/Dogs';
 import { UserView } from '../UserView/UserView';
 import { Contact } from '../Contact/Contact';
 
@@ -42,15 +41,8 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            navColorTheme: 'green',
-            dogs: {}
+            navColorTheme: 'green'
         }
-    }
-
-    componentDidMount() {
-        axios
-            .get('https://dog.ceo/api/breeds/list/all')
-            .then((res) => this.setState({dogs: Object.keys(res.data.message)}), () => console.log(this.state.dogs));
     }
 
     toggleNavColorTheme = () => {
@@ -64,10 +56,6 @@ export default class App extends React.Component {
             <div className='container'>
                 <h1 className='app-title'>Basic App</h1>
                 <Nav colorTheme={this.state.navColorTheme}/>
-                <ul>
-                    {console.log(this.state.dogs)}
-                    {Array.isArray(this.state.dogs) && this.state.dogs.map((dog, index) => <li key={index}>{dog}</li>)}
-                </ul>
                 <main>
                     <Switch>
                         <Route exact path='/' render={
@@ -83,6 +71,7 @@ export default class App extends React.Component {
                         <Route exact path='/users/:userId' component={UserView}></Route>
                         <Route exact path='/users' component={Users}></Route>
                         <Route path='/contact' component={Contact}></Route>
+                        <Route path='/dogs' component={Dogs}></Route>
                         <Route path='*' render={
                             () => <div>Nie znaleziono strony.</div>
                         }></Route>

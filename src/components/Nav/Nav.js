@@ -22,6 +22,7 @@ export const Nav = (props) => {
         <nav className={`main-navigation main-navigation--${props.colorTheme}`}>
             <NavLink className='main-navigation__item' exact to='/'>Home</NavLink>
             <NavLink className='main-navigation__item' to='/users'>Users</NavLink>
+            <NavLink className='main-navigation__item' to='/dogs'>Dogs</NavLink>
             <NavLink className='main-navigation__item' to='/contact'>Contact</NavLink>
         </nav>
     )
