@@ -26,7 +26,7 @@
 ├── package-lock.json           # lockfile dla npm@5
 ├── package.json                # indeks dependencji i deklaracje skryptów
 ├── README.md
-├── webpack.config.json         # główny plik konfiguracyjny Webpacka
+├── webpack.config.js           # główny plik konfiguracyjny Webpacka
 └── yarn.lock                   # lockfile dla Yarna
 ```
 
