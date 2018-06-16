@@ -44,8 +44,20 @@ Uruchomienie
 npm start
 ```
 
+lub
+
+```
+yarn start
+```
+
 Budowanie
 ------
 ```
 npm run build
+```
+
+lub
+
+```
+yarn build
 ```
